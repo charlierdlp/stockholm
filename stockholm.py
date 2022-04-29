@@ -71,7 +71,7 @@ def encrypt_files(file_name):
 		open_f.close()
 		os.remove(file_name)
 		if args.silent is False:
-			print('[🥵] ' + file_name + ' encrypted.')
+			print('[-] ' + file_name + ' encrypted.')
 	else:
 		print('[x] ' + file_name + ' permission denied.')
 
@@ -92,7 +92,7 @@ def decrypt_files(file_name):
 		open_f.close()
 		os.remove(file_name)
 		if args.silent is False:
-			print('[🥶] ' + file_name + ' decrypted.')
+			print('[+] ' + file_name + ' decrypted.')
 	else:
 		print('[x] ' + file_name + ' permission denied.')
 
