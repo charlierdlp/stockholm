@@ -5,6 +5,10 @@ and will encrypt and rename all the files in the mentioned folder adding the ".f
 
 Algorithm used: AES
 
+# Requierements
+sudo apt-get install python3-tk
+sudo apt-get install python-crypto
+
 # Usage:
 
 [] Normal mode:
