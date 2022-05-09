@@ -5,12 +5,10 @@ and will encrypt and rename all the files in the mentioned folder adding the ".f
 
 Algorithm used: AES
 
-# Requierements
-sudo apt-get install python3-tk
+## Requierements:
+sudo apt-get install python3-tk python-crypto
 
-sudo apt-get install python-crypto
-
-# Usage:
+## Usage:
 
 [] Normal mode:
 python3 stockholm.py
@@ -21,7 +19,7 @@ show help message and exits
 [-v] version flag:
 displays program version
 
-[-r] reversee flag:
+[-r] reverse flag:
 decreypts the encrypted files
 
 [-s] silent mode
