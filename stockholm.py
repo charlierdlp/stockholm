@@ -56,7 +56,7 @@ def padding(data):
 
 def encrypt(files):
 	files = padding(files)
-	initialization_vector = Random.new().read(AES.block_size) #produce different encrypted data so that an attacker
+	initialization_vector = Random.new().read(AES.block_size)
 	cipher = AES.new(KEY, AES.MODE_CBC, initialization_vector)
 	return initialization_vector + cipher.encrypt(files)
 
